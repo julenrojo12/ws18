@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#erantzunEgokia {
+			color: green;
+		}
+		#erantzunEzEgokia {
+			color: red;
+		}
+		.kalkulagailua {
+            width: 300px;
+    		border: 5px solid ;
+   		 	padding: 25px;
+   			margin: auto;
+			background-color: rgb(191, 164, 191);
+   	 	}
+	</style>
+	<script>
+	function konprobatuEmaitza() {
+		var num1 = parseInt(document.getElementById("num1").value);
+        var eragilea = document.getElementById("eragilea").value;
+		var num2 = parseInt(document.getElementById("num2").value);
+		var esperotakoEmaitza = parseInt(document.getElementById("esperotakoEmaitza").value);
+		var emaitza;
+        if (eragilea=="+"){
+        	emaitza = num1 + num2;
+        }else if (eragilea=="-"){
+        	emaitza = num1 - num2;
+        }else if (eragilea=="*"){
+        	emaitza = num1 * num2;
+        }else{
+        	emaitza = num1 / num2;
+        }
+		
+		if(emaitza==esperotakoEmaitza){
+			document.getElementById("erantzunEgokia").innerHTML = "<b>EGOKIA</b>";
+			document.getElementById("erantzunEzEgokia").innerHTML ="";
+		}else{
+			document.getElementById("erantzunEzEgokia").innerHTML = "<b>ERROREA</b>";
+			document.getElementById("erantzunEgokia").innerHTML ="";
+		}
+		
+	}
+	function erreseteatu(){
+		document.getElementById("num1").value = "";
+		document.getElementById("num2").value = "";
+		document.getElementById("esperotakoEmaitza").value = "";
+		document.getElementById("erantzunEzEgokia").innerHTML ="";
+		document.getElementById("erantzunEgokia").innerHTML ="";
+	}
+	</script>
+</head>
+<body>
+	<center><h2><b>KALKULAGAILUA</b></h2></center><br>
+	
+	<div class="kalkulagailua">
+		Lehenengo zenbakia:<br>
+		<input id="num1" type="text">
+		<br><br>
+		Eragilea:<br>
+		<select id="eragilea">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<br><br>
+		Bigarren zenbakia:<br>
+		<input id="num2" type="text" >
+		<br><br>
+		Espero den emaitza:<br>
+		<input id="esperotakoEmaitza" type="text" >
+        <br><br> <p id="erantzunEgokia"></p>  <p id="erantzunEzEgokia"> </p>
+		<br>
+	
+		
+		<button onclick="konprobatuEmaitza()">Konprobatu</button> <button onclick="erreseteatu()">Erreseteatu</button> 
+	</div>
+	
+</body>
+</html>

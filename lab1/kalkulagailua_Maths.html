@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+	<style>
+		#erantzunEgokia {
+			color: green;
+		}
+		#erantzunEzEgokia {
+			color: red;
+		}
+		.kalkulagailua {
+            width: 300px;
+    		border: 5px solid ;
+   		 	padding: 25px;
+   			margin: auto;
+			background-color: rgb(191, 164, 191);
+   	 	}
+	</style>
+	<script>
+        function konprobatuEmaitza(){
+            eragiketa = document.getElementById("eragiketa").value;
+            esperotakoEmaitza = document.getElementById("esperotakoEmaitza").value;
+            emaitza = eval(eragiketa);
+            if(esperotakoEmaitza==emaitza){
+                document.getElementById("erantzunEgokia").innerHTML = "<b>EGOKIA</b>";
+			    document.getElementById("erantzunEzEgokia").innerHTML ="";
+		    }else{
+			    document.getElementById("erantzunEzEgokia").innerHTML = "<b>ERROREA</b>";
+			    document.getElementById("erantzunEgokia").innerHTML ="";
+            }
+        }
+        function erreseteatu(){
+    		document.getElementById("eragiketa").value = "";
+    		document.getElementById("esperotakoEmaitza").value = "";
+    		document.getElementById("erantzunEzEgokia").innerHTML ="";
+    		document.getElementById("erantzunEgokia").innerHTML ="";
+		}
+	</script>
+</head>
+<body>
+	<center><h2><b>KALKULAGAILUA</b></h2></center><br>
+	
+	<div class="kalkulagailua">
+		Eragiketa:<br>
+		<input id="eragiketa" type="text">
+		<br><br>
+		
+		Espero den emaitza:<br>
+		<input id="esperotakoEmaitza" type="text" >
+        <br><br> <p id="erantzunEgokia"></p>  <p id="erantzunEzEgokia"> </p>
+		<br>
+	
+		
+		<button onclick="konprobatuEmaitza()">Konprobatu</button> <button onclick="erreseteatu()">Erreseteatu</button> 
+	</div>
+	
+</body>
+</html>

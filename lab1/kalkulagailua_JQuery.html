@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+    	<script>
+    	$(document).ready(function(){
+			 $("#konprobatu").click(function(){
+                var num1= Number($("#num1").val());
+                var eragilea= $("#eragilea").val();
+                var num2= Number($("#num2").val());
+                var esperotakoEmaitza= Number($("#esperotakoEmaitza").val());
+                var emaitza;
+                if (eragilea=="+"){
+        	        emaitza = num1 + num2;
+                }else if (eragilea=="-"){
+        	        emaitza = num1 - num2;
+                }else if (eragilea=="*"){
+        	        emaitza = num1 * num2;
+                }else{
+        	        emaitza = num1 / num2;
+                }
+                if(emaitza==esperotakoEmaitza){
+				    $("#erantzunEgokia").text("");
+                    $("#erantzunEgokia").append("<b>EGOKIA</b>");
+                    $("#erantzunEzEgokia").text("");
+                }else{
+					$("#erantzunEzEgokia").text("");
+                    $("#erantzunEzEgokia").append("<b>ERROREA</b>");
+                    $("#erantzunEgokia").text("");
+                }    
+                
+            });
+            $("#erreseteatu").click(function(){
+                $("#num1").val("");
+                $("#num2").val("");
+                $("#esperotakoEmaitza").val("");
+				$("#erantzunEgokia").text("");
+				$("#erantzunEzEgokia").text("");
+           
+            });
+    	});    
+    	</script>
+    	<style>
+		#erantzunEgokia {
+			color: green;
+		}
+		#erantzunEzEgokia {
+			color: red;
+		}
+    	.kalkulagailua {
+            width: 300px;
+    		border: 5px solid ;
+   		 	padding: 25px;
+   			margin: auto;
+			background-color: rgb(191, 164, 191);
+   	 	}
+   	 	    
+   	 	</style>
+        
+        <title>Kalkulagailua_JQuery</title>
+    </head>
+    
+    <body>
+    <center><h2><b>KALKULAGAILUA</b></h2></center><br>
+	
+	<div class="kalkulagailua">
+		Lehenengo zenbakia:<br>
+		<input id="num1" type="text">
+		<br><br>
+		Eragilea:<br>
+		<select id="eragilea">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<br><br>
+		Bigarren zenbakia:<br>
+		<input id="num2" type="text" >
+		<br><br>
+		Espero den emaitza:<br>
+		<input id="esperotakoEmaitza" type="text" >
+        <br><br> <p id="erantzunEgokia"></p>  <p id="erantzunEzEgokia"> </p>
+		<br>
+		<button id="konprobatu">Konprobatu</button> 
+		<button id="erreseteatu">Erreseteatu</button> 
+	</div>
+
+    </body>
+</html>
