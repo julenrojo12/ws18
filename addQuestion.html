@@ -1,20 +1,125 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8"> 
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script>
+	$(document).ready(function(){
+		$("#erreseteatu").click(function(){
+			$("#eposta").val("");
+			$("#galdera").val("");
+			$("#erantzunZuzena").val("");
+			$("#erantzunOkerra1").val("");
+			$("#erantzunOkerra2").val("");    
+			$("#erantzunOkerra3").val("");
+			$("#zailtasuna").val(""); 
+			$("#gaiArloa").val(""); 
+        });
+		$("form").submit(function(){
+			RPosta = new RegExp(/^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$/);
+			if(!RPosta.test($("#eposta").val())){
+				alert("e-mail okerra sartu da.");
+				return false;
+			}
+			RZail = new RegExp(/^[0-5]$/);
+			if(!RZail.test($("#zailtasuna").val())){
+				alert("zailtasuna 0 eta 5 tartean egon behar da");
+				return false;
+			}
+			RGald = new RegExp(/^([a-z]{10,})$/);
+			if(!RGald.test($("#galdera").val())){
+				alert("Galderak gutxienez 10 hitz izan behar ditu");
+				return false;
+			}
+			RHuts = new RegExp(/^([Aa-zZ]{1,})|([0-9]{1,})$/);
+			if(!RHuts.test($("#erantzunZuzena").val())){
+				alert("Erantzun zuzena hutsik dago.");
+				return false;
+			}
+			if(!RHuts.test($("#erantzunOkerra1").val())){
+				alert("Erantzun okerra 1 hutsik dago.");
+				return false;
+			}
+			if(!RHuts.test($("#erantzunOkerra2").val())){
+				alert("Erantzun okerra 2 hutsik dago.");
+				return false;
+			}
+			if(!RHuts.test($("#erantzunOkerra3").val())){
+				alert("Erantzun okerra 3 hutsik dago.");
+				return false;
+			}
+			if(!RHuts.test($("#gaiArloa").val())){
+				alert("Gai arloa hutsik dago.");
+				return false;
+			}
+			
+			return true;
+			
+		});
+	});			
+	</script>
+	<style>
+		.formularioa{
+			width: 350px;
+			border: 5px solid ;
+   			padding: 25px;
+   			margin: auto;
+			background-color: rgb(191, 164, 191);
+		}
+	</style>
+	
+	
 <body>
 
-<h2>HTML Forms</h2>
+<h2><center>HTML Forms</center></h2>
+<div class="formularioa" >
+<form action="php/proba.php" id="form" name="galderenF" method="POST" >
 
-<form action="/action_page.php">
-  First name:<br>
-  <input type="text" name="firstname" value="Mickey">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="Mouse">
+  Eposta(*):
+  <input type="text" id="eposta" name="eposta" >
+  <br><br><br>
+  Galdera(*):
+  <input type="text" id="galdera" name="galdera"  >
   <br><br>
-  <input type="submit" value="Submit">
+  Erantzun zuzena(*):
+  <input type="text" id="erantzunZuzena" name="erantzunZuzena" >
+  <br><br>
+  
+  Erantzun okerra 1(*):
+  <input type="text" id="erantzunOkerra1" name="erantzunOkerra1" >
+  <br><br>
+  
+  Erantzun okerra 2(*):
+  <input type="text" id="erantzunOkerra2" name="erantzunOkerra2" >
+  <br><br>
+  
+  Erantzun okerra 3(*):
+  <input type="text" id="erantzunOkerra3" name="erantzunOkerra3" >
+  <br><br><br>
+  
+  Galderaren zailtasuna(*):
+  <input type="text" id="zailtasuna" name="zailtasuna" > 
+  <br><br>
+  
+  Gai-arloa(*):
+  <input type="text" id="gaiArloa" name="gaiArloa" >
+  <br><br>
+  
+  Irudia:
+  <input type="file" name="archivo_foto" >
+  <br><br>
+  
+  <input type="submit" value="Galdera bidali"> 
 </form> 
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+	<button id="erreseteatu">Erreseteatu</button>
+	
+	
 
+	
+	
+</div>
+<center><span><a href='layout.html'>Home</a></span></center>
 </body>
 </html>
+	
