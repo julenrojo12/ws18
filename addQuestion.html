@@ -4,6 +4,19 @@
 	<meta charset="utf-8"> 
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script>
+	function preview(){
+		
+		var path;
+		
+		path = document.getElementById("argazkia");
+		path = path.value;
+		var pathAux = path.split("fakepath");
+		var pathFin = "images" + pathAux[1];
+		
+		document.getElementById("preview").innerHTML = '<img src="' + pathFin + '" alt="preview" width=50 height=40 />';
+	
+		
+	}
 	$(document).ready(function(){
 		$("#erreseteatu").click(function(){
 			$("#eposta").val("");
@@ -106,18 +119,14 @@
   <br><br>
   
   Irudia:
-  <input type="file" name="archivo_foto" >
+  <input type="file" id="argazkia" name="argazkia" onchange="preview()" > <p id="preview"> </p>
   <br><br>
   
   <input type="submit" value="Galdera bidali"> 
 </form> 
-
-	<button id="erreseteatu">Erreseteatu</button>
-	
-	
-
-	
-	
+<br>
+<button id="erreseteatu">Erreseteatu</button>
+		
 </div>
 <center><span><a href='layout.html'>Home</a></span></center>
 </body>
