@@ -39,12 +39,12 @@
 				alert("zailtasuna 0 eta 5 tartean egon behar da");
 				return false;
 			}
-			RGald = new RegExp(/^([a-z]{10,})$/);
+			RGald = new RegExp(/.{10,}/);
 			if(!RGald.test($("#galdera").val())){
 				alert("Galderak gutxienez 10 hitz izan behar ditu");
 				return false;
 			}
-			RHuts = new RegExp(/^([Aa-zZ]{1,})|([0-9]{1,})$/);
+			RHuts = new RegExp(/.{1,}/);
 			if(!RHuts.test($("#erantzunZuzena").val())){
 				alert("Erantzun zuzena hutsik dago.");
 				return false;
@@ -86,7 +86,7 @@
 
 <h2><center>HTML Forms</center></h2>
 <div class="formularioa" >
-<form action="php/proba.php" id="form" name="galderenF" method="POST" >
+<form action="php/addQuestion.php" id="form" name="galderenF" method="POST" >
 
   Eposta(*):
   <input type="text" id="eposta" name="eposta" >
