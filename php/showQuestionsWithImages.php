@@ -29,7 +29,9 @@
                 <td><?php echo $datuak["Galdera"]?></td>
                 <td><?php echo $datuak["ErantzunZuzena"]?></td>
                 <td><?php if($datuak["Irudia"]!= null){
-								echo '<img src="data:image/jpeg;base64,' . $datuak["Irudia"] . '" width="80" height="60"/>'; 
+							  echo '<img src="data:image/jpeg;base64,' . $datuak["Irudia"] . '" width="80" height="60"/>'; 
+						  }else{
+							  echo 'Irudi gabe';
 						  }
 					?></td>
             </tr>
