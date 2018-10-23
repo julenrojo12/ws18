@@ -10,7 +10,7 @@ if($local){
 }else{
 	$servername = "localhost";
 	$username = "id7284391_julmik";
-	$password = "xxxxxxxxxxxxxxxx";
+	$password = "rosaarruabarrena";
 	$dbname = "id7284391_quiz";
 }
 
