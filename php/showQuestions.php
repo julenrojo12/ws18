@@ -15,7 +15,7 @@
 	if ($result->num_rows > 0) {
 		
 		while($row = $result->fetch_assoc()) {
-			echo "Id: " . $row["Id"] . "<br> Eposta: ". $row["Eposta"]. "<br> Galdera: ". $row["Galdera"]. "<br>Erantzun zuzena: " . $row["ErantzunZuzena"] . "<br>Erantzun okerra 1: " . $row["ErantzunOkerra1"] . "<br>Erantzun okerra 2: " . $row["ErantzunOkerra2"] .  "<br>Erantzun okerra 3: " . $row["ErantzunOkerra3"] . "<br>Galderaren zailtasuna: " . $row["GalderarenZailtasuna"] . "<br>Gai-arloa: " . $row["GaiArloa"]."<br>Irudia: ".$row["Irudia"]."<br><br><br>";
+			echo "Id: " . $row["Id"] . "<br> Eposta: ". $row["Eposta"]. "<br> Galdera: ". $row["Galdera"]. "<br>Erantzun zuzena: " . $row["ErantzunZuzena"] . "<br>Erantzun okerra 1: " . $row["ErantzunOkerra1"] . "<br>Erantzun okerra 2: " . $row["ErantzunOkerra2"] .  "<br>Erantzun okerra 3: " . $row["ErantzunOkerra3"] . "<br>Galderaren zailtasuna: " . $row["GalderarenZailtasuna"] . "<br>Gai-arloa: " . $row["GaiArloa"]."<br><br><br>";
 		}
 	} else {
 		echo "0 results";
@@ -23,3 +23,8 @@
 
 	$conn->close();
 ?>
+
+<br><br>
+<a href='../addQuestion.html'>Beste galdera bat gehitu</a> <br><br>
+<a href='./showQuestionsWithImages.php'>Galderak erakutsi (irudiarekin)</a> <br><br>
+<a href='../layout.html'>Home</a>

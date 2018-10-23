@@ -4,29 +4,20 @@
 	<meta charset="utf-8"> 
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script>
-	function preview(){
+	function preview(event){
 		
-		var path;
-		
-		path = document.getElementById("argazkia");
-		path = path.value;
-		var pathAux = path.split("fakepath");
-		var pathFin = "images" + pathAux[1];
-		
-		document.getElementById("preview").innerHTML = '<img src="' + pathFin + '" alt="preview" width=50 height=40 />';
-	
+		var reader = new FileReader();
+		reader.onload = function(){
+			var output = document.getElementById('output-image');
+			output.src = reader.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
 		
 	}
 	$(document).ready(function(){
 		$("#erreseteatu").click(function(){
-			$("#eposta").val("");
-			$("#galdera").val("");
-			$("#erantzunZuzena").val("");
-			$("#erantzunOkerra1").val("");
-			$("#erantzunOkerra2").val("");    
-			$("#erantzunOkerra3").val("");
-			$("#zailtasuna").val(""); 
-			$("#gaiArloa").val(""); 
+			 $('#form')[0].reset();
+			 $('#argazkia').val("");
         });
 		
 	});			
@@ -46,7 +37,7 @@
 
 <h2><center>HTML Forms</center></h2>
 <div class="formularioa" >
-<form action="php/addQuestion.php" id="form" name="galderenF" onsubmit="return checkForm(this);" method="POST" >
+<form action="php/addQuestion.php" id="form" name="galderenF" onsubmit="return checkForm(this);" method="POST"  enctype="multipart/form-data">
 
   Eposta(*):
   <input type="text" id="eposta" name="eposta" required pattern="^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$" oninvalid="this.setCustomValidity('e-mail okerra sartu da.')" oninput="setCustomValidity('')">
@@ -79,7 +70,7 @@
   <br><br>
   
   Irudia:
-  <input type="file" id="argazkia" name="archivo_foto" onchange="preview()" > <p id="preview"> </p>
+  <input type="file" id="argazkia" accept="image/*" name="argazkia" onChange= "preview(event)" > <img id="output-image" width="60" height= "40" alt="preview"/> 
   <br><br>
   
   <input type="submit" value="Galdera bidali"> 
