@@ -54,7 +54,7 @@
 			if($row['Pasahitza']!=$pasahitza){
 				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
 			}else{
-				header('Location: ../layoutLogged.html');
+				echo"<script language='javascript'>window.location='../layoutLogged.html'</script>;";
 			}		
 		}
 	}
