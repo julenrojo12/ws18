@@ -51,7 +51,10 @@
 			$irudiaKodetuta = base64_encode($irudiarenEdukia);
 		}
 		
-		
+		$conn = new mysqli ($servername,$username,$password,$dbname);
+		if ($conn->connect_error) {
+			("Connection failed: " . $conn->connect_error);
+		}
 		if($pasahitza==$pasahitzaerrepikatu){
 				
 			if(!preg_match("^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$^",$eposta)){
@@ -65,10 +68,7 @@
 				
 			}else{
 				
-				$conn = new mysqli ($servername,$username,$password,$dbname);
-				if ($conn->connect_error) {
-					("Connection failed: " . $conn->connect_error);
-				}
+				
 				
 				$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
 				$result = $conn->query($sql);

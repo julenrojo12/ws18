@@ -47,13 +47,14 @@
 		
 		if($result->num_rows==0){
 			
-			echo "Ez zaude erregistratuta. Erregistratu zaitez panoko!";
+			echo "Ez zaude erregistratuta. Lehenengo " . "<a href='./signUp.php'>erregistratu</a>" . " zaitez.";
 			
 		}else{
 			$row = $result->fetch_assoc();
 			if($row['Pasahitza']!=$pasahitza){
 				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
 			}else{
+				echo "Sesioan sartzen...";
 				echo "<script language='javascript'>window.location='../layoutLogged.html'; </script>";
 				
 			}		
