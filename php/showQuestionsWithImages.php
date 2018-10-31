@@ -44,6 +44,6 @@
 	
 
 
-<a href='../addQuestion.html'>Beste galdera bat gehitu</a> <br><br>
+<a href='../addQuestionHTML5.html'>Beste galdera bat gehitu</a> <br><br>
 <a href='./showQuestions.php'>Galderak erakutsi (irudi gabe)</a> <br><br>
 <a href='../layout.html'>Home</a>
