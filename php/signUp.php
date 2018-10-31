@@ -85,7 +85,7 @@
 					if ($conn->query($sql) === TRUE) {
 						echo "New record created successfully<br><br>";
 						echo "<b>Ondo! Erregistratzea lortu duzu!</b>";
-						echo"<script language='javascript'>window.location='../layout.html'</script>;";
+						echo "<script language='javascript'>window.location='../layout.html'; </script>";
 					} else {
 						echo "Error: " . $sql . "<br>" . $conn->error . "<br><br>";
 						echo "<b>Ez duzu erregistratzea lortu, saiatu berriro!</b>";
