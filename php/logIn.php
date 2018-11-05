@@ -54,8 +54,8 @@
 			if($row['Pasahitza']!=$pasahitza){
 				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
 			}else{
-				echo "Sesioan sartzen...";
-				echo "<script language='javascript'>window.location='../layoutLogged.html'; </script>";
+				echo "<script language='javascript'>window.location='layoutLogged.php?erabiltzailea=" . $eposta . "'; </script>";
+				
 				
 			}		
 		}

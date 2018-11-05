@@ -25,13 +25,20 @@
 		<b>Espezialitatea:</b> Softwarearen Ingenieritza
 		
 		<br><br>
-		<img src="images/maxresdefault.jpg" alt="2 tolais y medio" width="500" height="300">
+		<img src="../images/maxresdefault.jpg" alt="Mikel eta Julen argazkia" width="500" height="300">
 		<br><br>
 		<b>Bizilekua:</b> Bilbao-Berriz
 		
 		<br><br>
 		</div>
-		<center><a href='layout.html'>Home</a></center>
+		<?php
+			if(isset($_GET['erabiltzailea']) ){
+				echo "<center><a href='layoutLogged.php?erabiltzailea=" . $_GET['erabiltzailea'] ."'>Home</a></center>";
+			}else{
+				echo "<center><a href='../layout.html'>Home</a></center>";
+			}
+			
+		?>
 		
 </form> 
 	
