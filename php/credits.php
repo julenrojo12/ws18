@@ -37,10 +37,7 @@
 			}else{
 				echo "<center><a href='../layout.html'>Home</a></center>";
 			}
-			
 		?>
-		
-</form> 
 	
 	</body>
 </html>

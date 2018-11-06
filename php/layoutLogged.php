@@ -61,7 +61,7 @@
 	</div>
     </section>
 	<footer class='main' id='f1'>
-		 <a href='https://github.com/julenrojo12/ws18'>Link GITHUB</a>
+		 <a href=''>Link GITHUB</a>
 	</footer>
 </div>
 </body>
