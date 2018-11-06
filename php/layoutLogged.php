@@ -50,6 +50,7 @@
 		<span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span>
 		<span><a href=''>Quizzes</a></span>
 		<span><a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Add question</a></span>
+		<span><a href='showQuestionsWithImages.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show questions</a></span>
 		<span><a href='credits.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
