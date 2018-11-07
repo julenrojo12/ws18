@@ -51,6 +51,9 @@
 		<span><a href=''>Quizzes</a></span>
 		<span><a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Add question</a></span>
 		<span><a href='showQuestionsWithImages.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show questions</a></span>
+		<span><a href='../xml/questions.xml?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show XML questions</a></span>
+		<span><a href='showXMLQuestions.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show XML questions (PHP)</a></span>
+		<span><a href='transformatuXML.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>XML transfAuto</a></span>
 		<span><a href='credits.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">

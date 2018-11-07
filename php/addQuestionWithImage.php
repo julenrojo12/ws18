@@ -67,12 +67,32 @@
 			
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error . "<br><br>";
-			echo "<b>Ez da galdera gehitu</b>";
-			
+			echo "<b>Ez da galdera gehitu datu-basean</b>";	
 		}
 		
 		$conn->close();
 	}
+	$xml = simplexml_load_file('../xml/questions.xml') or die("Error: Cannot create XML");
+	$assessmentItem = $xml -> addChild('assessmentItem');
+	
+	$assessmentItem -> addAttribute('author',$eposta);
+	$assessmentItem -> addAttribute('subject',$gaiArloa);
+	
+	$itemBody = $assessmentItem -> addChild('itemBody');
+	$itemBody -> addChild('p',$galdera);
+	
+	$correctResponse = $assessmentItem -> addChild('correctResponse');
+	$correctResponse -> addChild('value',$erantzunZuzena);
+
+	$incorrectResponses = $assessmentItem -> addChild('incorrectResponses');
+	$incorrectResponses -> addChild('value',$erantzunOkerra1);
+	$incorrectResponses -> addChild('value',$erantzunOkerra2);
+	$incorrectResponses -> addChild('value',$erantzunOkerra3);
+	
+	
+	$xml->asXML('../xml/questions.xml');
+
+	echo "Galdera kargatuta XML fitxategian.";
 ?> 
 <br><br>
 <a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Beste galdera bat gehitu</a> <br><br>

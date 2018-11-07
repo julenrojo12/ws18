@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="assesmentItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="assesmentItem">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="author" type="xs:string"></xs:element>
+              <xs:element name="subject" type="xs:string"></xs:element>
+			  <xs:element name="itemBody" type="xs:string"></xs:element>
+              <xs:element name="correctResponse" type="xs:string"></xs:element>
+			  <xs:element name="zailtasuna" type="xs:integer"></xs:element>
+              <xs:element name="incorrectResponses" type="xs:string"></xs:element>
+			  
+              
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
