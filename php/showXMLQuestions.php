@@ -22,3 +22,5 @@ $xml =  simplexml_load_file('../xml/questions.xml');
 <?php endforeach; ?>
   </tbody>
 </table>
+
+<center><span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span></center>

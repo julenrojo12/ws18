@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding ="ISO-8859-1" standalone="no"?>
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="showXMLQuestions.xsl"?>
 
 <assessmentItems>
@@ -17,3 +17,5 @@
 	</assessmentItem>
 	
 <assessmentItem author="jrojo013@ikasle.ehu.eus" subject="Imalol"><itemBody><p>imanol panoko bat da?</p></itemBody><correctResponse><value>Bai</value></correctResponse><incorrectResponses><value>ez</value><value>Ez dakit</value><value>agian</value></incorrectResponses></assessmentItem></assessmentItems>
+
+

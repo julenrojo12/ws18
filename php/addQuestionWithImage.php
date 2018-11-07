@@ -63,7 +63,7 @@
 		
 		if ($conn->query($sql) === TRUE) {
 			echo "New record created successfully<br><br>";
-			echo "<b>Galdera gehitu da</b>";
+			echo "1-Galdera gehitu da";
 			
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error . "<br><br>";
@@ -89,10 +89,32 @@
 	$incorrectResponses -> addChild('value',$erantzunOkerra2);
 	$incorrectResponses -> addChild('value',$erantzunOkerra3);
 	
-	
 	$xml->asXML('../xml/questions.xml');
+	echo "<br>";
+	echo "2-Galdera kargatuta questions.xml fitxategian.";
+	
+	$xml = simplexml_load_file('../xml/questionsTransAuto.xml') or die("Error: Cannot create XML");
+	$assessmentItem = $xml -> addChild('assessmentItem');
+	
+	$assessmentItem -> addAttribute('author',$eposta);
+	$assessmentItem -> addAttribute('subject',$gaiArloa);
+	
+	$itemBody = $assessmentItem -> addChild('itemBody');
+	$itemBody -> addChild('p',$galdera);
+	
+	$correctResponse = $assessmentItem -> addChild('correctResponse');
+	$correctResponse -> addChild('value',$erantzunZuzena);
 
-	echo "Galdera kargatuta XML fitxategian.";
+	$incorrectResponses = $assessmentItem -> addChild('incorrectResponses');
+	$incorrectResponses -> addChild('value',$erantzunOkerra1);
+	$incorrectResponses -> addChild('value',$erantzunOkerra2);
+	$incorrectResponses -> addChild('value',$erantzunOkerra3);
+	
+	$xml->asXML('../xml/questionsTransAuto.xml');
+    echo "<br>";
+	echo "3-Galdera kargatuta questionTransAuto.xml fitxategian.";
+	
+	
 ?> 
 <br><br>
 <a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Beste galdera bat gehitu</a> <br><br>

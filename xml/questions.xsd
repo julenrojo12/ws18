@@ -11,9 +11,7 @@
 			  <xs:element name="itemBody" type="xs:string"></xs:element>
               <xs:element name="correctResponse" type="xs:string"></xs:element>
 			  <xs:element name="zailtasuna" type="xs:integer"></xs:element>
-              <xs:element name="incorrectResponses" type="xs:string"></xs:element>
-			  
-              
+              <xs:element name="incorrectResponses" type="xs:string"></xs:element>     
             </xs:sequence>
           </xs:complexType>
         </xs:element>
