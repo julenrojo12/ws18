@@ -28,7 +28,7 @@
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-				$sql =  "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+				$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
 				$result = $conn->query($sql);
 				$datuak=$result->fetch_array();
 				
@@ -49,6 +49,7 @@
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span>
 		<span><a href=''>Quizzes</a></span>
+		<span><a href='handlingQuizesAJAX.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Manage question</a></span>
 		<span><a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Add question</a></span>
 		<span><a href='showQuestionsWithImages.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show questions</a></span>
 		<span><a href='../xml/questions.xml?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show XML questions</a></span>

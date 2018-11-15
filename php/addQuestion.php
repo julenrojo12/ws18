@@ -32,7 +32,7 @@
 		}
 	</style>
 	
-	
+</head>	
 <body>
 
 <h2><center>HTML Forms</center></h2>
