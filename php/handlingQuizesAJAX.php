@@ -87,6 +87,7 @@
 	}		  
 ?>
 </span>
+<a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a>
 <center><input type="button" value="Nire galderak erakutsi" onclick="nireGalderakErakutsi()">  <input type="button" value="Galdera gehitu" onclick="galderaGehitu()"> </center><br>
 <div id="formularioa">
 	<form action="" method="POST" onsubmit="return checkForm(this);" id="form" name="galderenF" enctype="multipart/form-data">
