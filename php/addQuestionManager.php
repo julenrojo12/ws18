@@ -1,4 +1,3 @@
-
  <?php
 	sleep(2);
 	include 'dbConfig.php';

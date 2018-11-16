@@ -2,16 +2,19 @@
 <html>
 <head>
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<style>
 		#feedback{
 			color: blue;
 		}
+		#galderaKont{
+			font-weight: bold;
+			color: red;
+		}
 		.argazkia{
 			position: absolute;
 			top: 1em;
-			right: 1em;
-			
+			right: 1em;	
 		}
 		#formularioa{
 			width: 350px;
@@ -27,11 +30,21 @@
 				document.getElementById('bistaratu').innerHTML = xhro.responseText;
 			}
 		}
+		
+		//Galderen kontagailua 20 segunduro
+		setInterval(function galderakKontatu(){
+			$.ajax({
+				  type:'GET',
+				  url:'xmlCounter.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>',
+				  success: function(data){$('#galderaKont').fadeIn().html(data);},
+			});
+		},20000);
+		
 		function nireGalderakErakutsi(){ 
 			xhro.open("GET",'showMyXMLQuestionsManager.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>',true);
 			xhro.send(null);
 		}
-	
+		
 		function galderaGehitu(){ 
 			$eposta = document.getElementById('eposta').value;
 			$galdera = document.getElementById('galdera').value;
@@ -57,6 +70,7 @@
 				nireGalderakErakutsi();
 			});
 		}
+		
 		
 	</script>
 </head>	
@@ -110,8 +124,9 @@
 	  <button type="reset">Erreseteatu</button>
 	</form> 
 </div>
-<center><div id="feedback">
-</div></center>
+<center>
+<div id="galderaKont"></div>
+<div id="feedback"></div></center>
 <div id="bistaratu">
 	<center><p> GALDERAK ...</p></center>
 </div>
