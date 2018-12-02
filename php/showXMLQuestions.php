@@ -1,4 +1,5 @@
 <?php
+session_start();
 $xml =  simplexml_load_file('../xml/questions.xml');
 ?>
 <center><h3> questions.xml fitxategiaren edukia </h3></center>
@@ -23,4 +24,4 @@ $xml =  simplexml_load_file('../xml/questions.xml');
   </tbody>
 </table>
 
-<center><span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span></center>
+<center><span><a href='layoutLogged.php'>Home</a></span></center>

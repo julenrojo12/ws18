@@ -1,5 +1,5 @@
 <?php
-
+	session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='login.php'; </script>";}
 	include 'dbConfig.php';
 	
 	$conn = new mysqli ($servername,$username,$password,$dbname);
@@ -44,6 +44,6 @@
 	
 
 
-<a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Beste galdera bat gehitu</a> <br><br>
-<a href='showQuestions.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Galderak erakutsi (irudi gabe)</a> <br><br>
-<a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a>
+<a href='addQuestion.php'>Beste galdera bat gehitu</a> <br><br>
+<a href='showQuestions.php'>Galderak erakutsi (irudi gabe)</a> <br><br>
+<a href='layoutLogged.php'>Home</a>

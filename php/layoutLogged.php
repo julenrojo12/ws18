@@ -1,3 +1,4 @@
+<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='login.php'; </script>";} ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,8 +19,8 @@
 	<header class='main' id='h1'>
 		
       <p><?php 
-			if(isset($_GET['erabiltzailea']) ){
-				$eposta = $_GET['erabiltzailea'];
+			if(isset($_SESSION['erabiltzailea']) ){
+				$eposta = $_SESSION['erabiltzailea'];
 				echo $eposta;
 			
 				include 'dbConfig.php';
@@ -47,15 +48,14 @@
 	<h2>Quiz: crazy questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span>
+		<span><a href='layoutLogged.php'>Home</a></span>
 		<span><a href=''>Quizzes</a></span>
-		<span><a href='handlingQuizesAJAX.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Manage question</a></span>
-		<span><a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Add question</a></span>
-		<span><a href='showQuestionsWithImages.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show questions</a></span>
-		<span><a href='../xml/questions.xml?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show XML questions</a></span>
-		<span><a href='showXMLQuestions.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Show XML questions (PHP)</a></span>
-		<span><a href='transformatuXML.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>XML transfAuto</a></span>
-		<span><a href='credits.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Credits</a></span>
+		<span><a href='handlingQuizesAJAX.php'>Manage question</a></span>
+		<?php if($_SESSION['erabiltzailea']=="admin000@ehu.eus"){echo "<span><a href='handlingAccounts.php'>Manage users</a></span>";} ?>
+		<span><a href='showQuestionsWithImages.php'>Show questions</a></span>
+		<span><a href='showXMLQuestions.php'>Show XML questions</a></span>
+		<span><a href='transformatuXML.php'>XML transfAuto</a></span>
+		<span><a href='credits.php'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
     

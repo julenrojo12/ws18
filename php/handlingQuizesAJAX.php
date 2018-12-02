@@ -1,3 +1,4 @@
+<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='login.php'; </script>";}?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,13 +36,13 @@
 		setInterval(function galderakKontatu(){
 			$.ajax({
 				  type:'GET',
-				  url:'xmlCounter.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>',
+				  url:'xmlCounter.php',
 				  success: function(data){$('#galderaKont').fadeIn().html(data);},
 			});
 		},20000);
 		
 		function nireGalderakErakutsi(){ 
-			xhro.open("GET",'showMyXMLQuestionsManager.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>',true);
+			xhro.open("GET",'showMyXMLQuestionsManager.php',true);
 			xhro.send(null);
 		}
 		
@@ -77,8 +78,8 @@
 <body>
 <span class="argazkia">
 <?php 
-	if(isset($_GET['erabiltzailea']) ){
-		$eposta = $_GET['erabiltzailea'];
+	if(isset($_SESSION['erabiltzailea']) ){
+		$eposta = $_SESSION['erabiltzailea'];
 		echo $eposta;
 	
 		include 'dbConfig.php';
@@ -101,11 +102,11 @@
 	}		  
 ?>
 </span>
-<a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a>
+<a href='layoutLogged.php'>Home</a>
 <center><input type="button" value="Nire galderak erakutsi" onclick="nireGalderakErakutsi()">  <input type="button" value="Galdera gehitu" onclick="galderaGehitu()"> </center><br>
 <div id="formularioa">
 	<form action="" method="POST" onsubmit="return checkForm(this);" id="form" name="galderenF" enctype="multipart/form-data">
-	  Eposta(*): <input type="text" id="eposta" name="eposta" value="<?php echo $_GET['erabiltzailea']?>" required pattern="^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$" oninvalid="this.setCustomValidity('e-mail okerra sartu da.')" oninput="setCustomValidity('')"> 
+	  Eposta(*): <input type="text" id="eposta" name="eposta" value="<?php echo $_SESSION['erabiltzailea']?>" required pattern="^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$" oninvalid="this.setCustomValidity('e-mail okerra sartu da.')" oninput="setCustomValidity('')"> 
 	  <br><br>
 	  Galdera(*): <input type="text" id="galdera" name="galdera" required pattern=".{10,}" oninvalid="this.setCustomValidity('Galderak gutxienez 10 hitz izan behar ditu')" oninput="setCustomValidity('')">
 	  <br><br>

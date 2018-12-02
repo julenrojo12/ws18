@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -32,8 +33,8 @@
 		<br><br>
 		</div>
 		<?php
-			if(isset($_GET['erabiltzailea']) ){
-				echo "<center><a href='layoutLogged.php?erabiltzailea=" . $_GET['erabiltzailea'] ."'>Home</a></center>";
+			if(isset($_SESSION['erabiltzailea']) ){
+				echo "<center><a href='layoutLogged.php'>Home</a></center>";
 			}else{
 				echo "<center><a href='../layout.html'>Home</a></center>";
 			}

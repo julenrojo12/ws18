@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $xml =  simplexml_load_file('../xml/questions.xml');
 ?>
 <center><h3> questions.xml fitxategiaren edukia: </h3></center>
@@ -15,7 +16,7 @@ $xml =  simplexml_load_file('../xml/questions.xml');
   <tbody>
 
 <?php foreach ($xml->assessmentItem as $assessmentItem) :
-	if($_GET['erabiltzailea']==$assessmentItem -> attributes() -> author){?>
+	if($_SESSION['erabiltzailea']==$assessmentItem -> attributes() -> author){?>
 		<tr>
 		  <td><?php echo $assessmentItem -> attributes() -> author; ?></td>
 		  <td><?php echo $assessmentItem-> itemBody -> p; ?></td>
@@ -26,3 +27,4 @@ $xml =  simplexml_load_file('../xml/questions.xml');
 	
   </tbody>
 </table>
+<a href='layoutLogged.php'>Home</a>

@@ -1,4 +1,53 @@
-<!DOCTYPE html>
+<?php
+  session_start();  
+?>
+<?php
+	include 'dbConfig.php';
+	echo "<br>";
+	if(isset($_POST['logeatu'])){
+		
+		$eposta= $_POST["eposta"];
+		$pasahitza =$_POST["pasahitza"];
+		
+		$conn = new mysqli ($servername,$username,$password,$dbname);
+		if ($conn->connect_error) {
+						("Connection failed: " . $conn->connect_error);
+		}
+		
+		$sqlEposta= "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+		
+		$result=$conn->query($sqlEposta);
+		
+		if($result->num_rows==0){
+			
+			echo "Ez zaude erregistratuta. Lehenengo " . "<a href='./signUp.php'>erregistratu</a>" . " zaitez.";
+			
+		}else{
+			$row = $result->fetch_assoc();
+			if($row['Pasahitza']!=$pasahitza){
+				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
+				
+			}else{
+				
+				$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+				$result = $conn->query($sql);
+				$datuak=$result->fetch_array();
+				if($datuak['Blokeatuta']=="Bai"){
+					echo "Administratzaileak erabiltzailea <b>blokeatu</b> du.";
+				}else{ 
+					$_SESSION['erabiltzailea']= $eposta;
+					if($eposta=="admin000@ehu.eus"){
+						echo "<script language='javascript'>window.location='handlingAccounts.php'; </script>";
+					}else{
+						echo "<script language='javascript'>window.location='handlingQuizesAJAX.php'; </script>";
+					}
+				}
+			}		
+		}
+		$conn->close();
+	}
+	
+?>
 <html>
 <head>
 <style>
@@ -26,40 +75,6 @@
 	<input type="submit" name="logeatu" value="logeatu">
 	</form>
 	
- <?php
-  
-  
-	include 'dbConfig.php';
-	
-	if(isset($_POST['logeatu'])){
-		
-		$eposta= $_POST["eposta"];
-		$pasahitza =$_POST["pasahitza"];
-		
-		$conn = new mysqli ($servername,$username,$password,$dbname);
-		if ($conn->connect_error) {
-						("Connection failed: " . $conn->connect_error);
-		}
-		
-		$sqlEposta= "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
-		
-		$result=$conn->query($sqlEposta);
-		
-		if($result->num_rows==0){
-			
-			echo "Ez zaude erregistratuta. Lehenengo " . "<a href='./signUp.php'>erregistratu</a>" . " zaitez.";
-			
-		}else{
-			$row = $result->fetch_assoc();
-			if($row['Pasahitza']!=$pasahitza){
-				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
-			}else{
-				echo "<script language='javascript'>window.location='layoutLogged.php?erabiltzailea=" . $eposta . "'; </script>";
-				
-				
-			}		
-		}
-	}
-?>
+ 
 </body>	
 </html>

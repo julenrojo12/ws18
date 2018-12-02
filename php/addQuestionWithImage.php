@@ -1,6 +1,6 @@
 
  <?php
- 
+	session_start();
 	include 'dbConfig.php';
 
 	
@@ -117,10 +117,10 @@
 	
 ?> 
 <br><br>
-<a href='addQuestion.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Beste galdera bat gehitu</a> <br><br>
-<a href='showQuestions.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Galderak erakutsi</a> <br><br>
-<a href='showQuestionsWithImages.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Galderak erakutsi (irudiarekin)</a> <br><br>
-<a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a>
+<a href='addQuestion.php'>Beste galdera bat gehitu</a> <br><br>
+<a href='showQuestions.php'>Galderak erakutsi</a> <br><br>
+<a href='showQuestionsWithImages.php'>Galderak erakutsi (irudiarekin)</a> <br><br>
+<a href='layoutLogged.php'>Home</a>
 
 
 

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,10 +38,10 @@
 
 <h2><center>HTML Forms</center></h2>
 <div class="formularioa" >
-<form action="addQuestionWithImage.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>" id="form" name="galderenF" onsubmit="return checkForm(this);" method="POST"  enctype="multipart/form-data">
+<form action="addQuestionWithImage.php" id="form" name="galderenF" onsubmit="return checkForm(this);" method="POST"  enctype="multipart/form-data">
 
   Eposta(*):
-  <input type="text" id="eposta" name="eposta" value="<?php echo $_GET['erabiltzailea']?>" required pattern="^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$" oninvalid="this.setCustomValidity('e-mail okerra sartu da.')" oninput="setCustomValidity('')"> 
+  <input type="text" id="eposta" name="eposta" value="<?php echo $_SESSION['erabiltzailea']?>" required pattern="^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$" oninvalid="this.setCustomValidity('e-mail okerra sartu da.')" oninput="setCustomValidity('')"> 
   <br><br><br>
   Galdera(*):
   <input type="text" id="galdera" name="galdera" required pattern=".{10,}" oninvalid="this.setCustomValidity('Galderak gutxienez 10 hitz izan behar ditu')" oninput="setCustomValidity('')">
@@ -80,7 +81,7 @@
 	
 </div>
 
-<center><span><a href='layoutLogged.php?erabiltzailea=<?php echo $_GET['erabiltzailea']?>'>Home</a></span></center>
+<center><span><a href='layoutLogged.php'>Home</a></span></center>
 </body>
 </html>
 	
