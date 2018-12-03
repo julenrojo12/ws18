@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if($_SESSION['erabiltzailea']!="admin000@ehu.eus"){echo "<script language='javascript'>window.location='logIn.php'; </script>";}
+	if(!isset($_SESSION['erabiltzailea'])||($_SESSION['erabiltzailea']!="admin000@ehu.eus")){echo "<script language='javascript'>window.location='logIn.php'; </script>";}
 	include 'dbConfig.php';
 	$conn = new mysqli ($servername,$username,$password,$dbname);
 	if ($conn->connect_error) {

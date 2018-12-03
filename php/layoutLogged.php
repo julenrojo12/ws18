@@ -1,4 +1,4 @@
-<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='login.php'; </script>";} ?>
+<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='logIn.php'; </script>";} ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,7 +50,7 @@
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layoutLogged.php'>Home</a></span>
 		<span><a href=''>Quizzes</a></span>
-		<span><a href='handlingQuizesAJAX.php'>Manage question</a></span>
+		<?php if($_SESSION['erabiltzailea']!="admin000@ehu.eus"){echo "<span><a href='handlingQuizesAJAX.php'>Manage question</a></span>";} ?>
 		<?php if($_SESSION['erabiltzailea']=="admin000@ehu.eus"){echo "<span><a href='handlingAccounts.php'>Manage users</a></span>";} ?>
 		<span><a href='showQuestionsWithImages.php'>Show questions</a></span>
 		<span><a href='showXMLQuestions.php'>Show XML questions</a></span>

@@ -1,4 +1,4 @@
-<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='login.php'; </script>";}?>
+<?php session_start(); if(!isset($_SESSION['erabiltzailea'])||($_SESSION['erabiltzailea']=="admin000@ehu.eus")){echo "<script language='javascript'>window.location='logIn.php'; </script>";}?>
 <!DOCTYPE html>
 <html>
 <head>
