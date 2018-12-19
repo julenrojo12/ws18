@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php include 'segurtasuna.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,6 +19,32 @@
 		</style>
 	</head>
 	<body>
+	<?php 
+	if($log!="Anonymous"){
+		$eposta = $_SESSION['erabiltzailea'];
+		echo $eposta;
+
+		include 'dbConfig.php';
+
+		$conn = new mysqli ($servername,$username,$password,$dbname);
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+		$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+		$result = $conn->query($sql);
+		$datuak=$result->fetch_array();
+		
+		if($datuak["Argazkia"]!= null){
+			echo '<img src="data:image/jpeg;base64,' . $datuak["Argazkia"] . '" width="25" height="30"/>'; 
+		}else{
+			//Argazki predeterminatua jartzen du
+			echo '<img src="../images/sin_avatar.jpg" width="25" height="30"/>'; 
+		}
+		$conn->close();
+	}
+	
+			  
+	?>
 		<h2><center><b>CREDITS</b></center></h2>
 		<div class="credits">
 		<b>Deiturak:</b> Mikel Galarza eta Julen Rojo

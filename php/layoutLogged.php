@@ -1,5 +1,11 @@
-<?php session_start(); if(!isset($_SESSION['erabiltzailea'])){echo "<script language='javascript'>window.location='logIn.php'; </script>";} ?>
-<!DOCTYPE html>
+<?php 
+include 'segurtasuna.php';
+
+if($log=="Anonymous"){
+	echo "<script language='javascript'>window.location='logIn.php'; </script>";
+}
+
+?>
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
@@ -19,42 +25,35 @@
 	<header class='main' id='h1'>
 		
       <p><?php 
-			if(isset($_SESSION['erabiltzailea']) ){
-				$eposta = $_SESSION['erabiltzailea'];
-				echo $eposta;
-			
-				include 'dbConfig.php';
+			$eposta = $_SESSION['erabiltzailea'];
+			echo $eposta;
 		
-				$conn = new mysqli ($servername,$username,$password,$dbname);
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				}
-				$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
-				$result = $conn->query($sql);
-				$datuak=$result->fetch_array();
-				
-				if($datuak["Argazkia"]!= null){
-					echo '<img src="data:image/jpeg;base64,' . $datuak["Argazkia"] . '" width="30" height="30"/>'; 
-				}else{
-					//Argazki predeterminatua jartzen du
-					echo '<img src="../images/sin_avatar.jpg" width="20" height="30"/>'; 
-				}
-				$conn->close();
-			}	
+			include 'dbConfig.php';
+	
+			$conn = new mysqli ($servername,$username,$password,$dbname);
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+			$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+			$result = $conn->query($sql);
+			$datuak=$result->fetch_array();
 			
-	  
+			if($datuak["Argazkia"]!= null){
+				echo '<img src="data:image/jpeg;base64,' . $datuak["Argazkia"] . '" width="30" height="30"/>'; 
+			}else{
+				//Argazki predeterminatua jartzen du
+				echo '<img src="../images/sin_avatar.jpg" width="20" height="30"/>'; 
+			}
+			$conn->close();
 		?> </p>
       <span class="right"><a href='logOut.php'>LogOut</a> </span>
 	<h2>Quiz: crazy questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layoutLogged.php'>Home</a></span>
-		<span><a href=''>Quizzes</a></span>
-		<?php if($_SESSION['erabiltzailea']!="admin000@ehu.eus"){echo "<span><a href='handlingQuizesAJAX.php'>Manage question</a></span>";} ?>
-		<?php if($_SESSION['erabiltzailea']=="admin000@ehu.eus"){echo "<span><a href='handlingAccounts.php'>Manage users</a></span>";} ?>
-		<span><a href='showQuestionsWithImages.php'>Show questions</a></span>
-		<span><a href='showXMLQuestions.php'>Show XML questions</a></span>
-		<span><a href='transformatuXML.php'>XML transfAuto</a></span>
+		<span><a href='quizzes.php'>Quizzes</a></span>
+		<?php if($log=="User"){echo "<span><a href='handlingQuizesAJAX.php'>Manage question</a></span>";} ?>
+		<?php if($log=="Admin"){echo "<span><a href='handlingAccounts.php'>Manage users</a></span>";} ?>
 		<span><a href='credits.php'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">

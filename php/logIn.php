@@ -1,8 +1,42 @@
+<?php session_start(); ?>
+	
+<html>
+<head>
+<style>
+	.login{
+		width: 350px;
+		border: 5px solid ;
+		padding: 25px;
+		margin: auto;
+		background-color: rgb(191, 164, 191);
+	}
+</style>
+</head>
+<body>
+	<h2><center>Logeatu zaitez!</center></h2>
+	
+	<a href='../layout.html'>Home</a>
+	<div class="login" >
+	<form id="login" action="" name="login" onsubmit="return true;" method="POST"  enctype="multipart/form-data" >
+	Eposta(*):
+	<input type="text" id="eposta" name="eposta" >
+	<br><br>
+	
+	Pasahitza(*):
+	<input type="password" id="pasahitza" name="pasahitza" >
+	<br><br>
+		
+	<input type="submit" name="logeatu" value="logeatu">
+	<br><br>
+	Pasahitza ahaztu duzu? Berreskuratu <a href="pasahitzaBerreskuratu.php">hemen</a>
+	</form>
+	
+ 
+</body>	
+</html>
+
 <?php
-  session_start();  
-?>
-<?php
-	include 'dbConfig.php';
+include 'dbConfig.php';
 	echo "<br>";
 	if(isset($_POST['logeatu'])){
 		
@@ -24,7 +58,9 @@
 			
 		}else{
 			$row = $result->fetch_assoc();
-			if($row['Pasahitza']!=$pasahitza){
+			
+			//Pasahitza zifratua konparatzeko
+			if(!password_verify($pasahitza,$row["Pasahitza"])){
 				echo "Ez duzu pasahitza ondo ipini! Saiatu berriro!";
 				
 			}else{
@@ -48,33 +84,3 @@
 	}
 	
 ?>
-<html>
-<head>
-<style>
-	.login{
-		width: 350px;
-		border: 5px solid ;
-		padding: 25px;
-		margin: auto;
-		background-color: rgb(191, 164, 191);
-	}
-</style>
-</head>
-<body>
-	<h2><center>Logeatu zaitez!</center></h2>
-	<div class="login" >
-	<form id="login" action="" name="login" onsubmit="return true;" method="POST"  enctype="multipart/form-data" >
-	Eposta(*):
-	<input type="text" id="eposta" name="eposta" >
-	<br><br>
-	
-	Pasahitza(*):
-	<input type="password" id="pasahitza" name="pasahitza" >
-	<br><br>
-		
-	<input type="submit" name="logeatu" value="logeatu">
-	</form>
-	
- 
-</body>	
-</html>

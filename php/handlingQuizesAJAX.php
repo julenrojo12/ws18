@@ -1,5 +1,13 @@
-<?php session_start(); if(!isset($_SESSION['erabiltzailea'])||($_SESSION['erabiltzailea']=="admin000@ehu.eus")){echo "<script language='javascript'>window.location='logIn.php'; </script>";}?>
-<!DOCTYPE html>
+<?php 
+include 'segurtasuna.php';
+
+if($log=="Anonymous"){
+	echo "<script language='javascript'>window.location='logIn.php'; </script>";
+}else if($log=="Admin"){
+	echo "<script language='javascript'>window.location='logIn.php'; </script>";
+}
+
+?>
 <html>
 <head>
 	
@@ -78,28 +86,28 @@
 <body>
 <span class="argazkia">
 <?php 
-	if(isset($_SESSION['erabiltzailea']) ){
-		$eposta = $_SESSION['erabiltzailea'];
-		echo $eposta;
-	
-		include 'dbConfig.php';
 
-		$conn = new mysqli ($servername,$username,$password,$dbname);
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-		$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
-		$result = $conn->query($sql);
-		$datuak=$result->fetch_array();
-		
-		if($datuak["Argazkia"]!= null){
-			echo '<img src="data:image/jpeg;base64,' . $datuak["Argazkia"] . '" width="25" height="30"/>'; 
-		}else{
-			//Argazki predeterminatua jartzen du
-			echo '<img src="../images/sin_avatar.jpg" width="25" height="30"/>'; 
-		}
-		$conn->close();
-	}		  
+	$eposta = $_SESSION['erabiltzailea'];
+	echo $eposta;
+
+	include 'dbConfig.php';
+
+	$conn = new mysqli ($servername,$username,$password,$dbname);
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
+	$result = $conn->query($sql);
+	$datuak=$result->fetch_array();
+	
+	if($datuak["Argazkia"]!= null){
+		echo '<img src="data:image/jpeg;base64,' . $datuak["Argazkia"] . '" width="25" height="30"/>'; 
+	}else{
+		//Argazki predeterminatua jartzen du
+		echo '<img src="../images/sin_avatar.jpg" width="25" height="30"/>'; 
+	}
+	$conn->close();
+			  
 ?>
 </span>
 <a href='layoutLogged.php'>Home</a>

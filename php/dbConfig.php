@@ -1,6 +1,4 @@
-
- <?php
- 
+<?php
 $local=1;  // hodeian 0, lokalean gauedenean 1
 if($local){
 	$servername = "localhost";
@@ -10,9 +8,8 @@ if($local){
 }else{
 	$servername = "localhost";
 	$username = "id7284391_julmik";
-	$password = "xxxxxxxxxxxxxxxxx";
+	$password = "xxxxxxxxxxxxxxxx";
 	$dbname = "id7284391_quiz";
 }
-
 ?> 
 

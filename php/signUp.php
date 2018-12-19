@@ -60,6 +60,9 @@
 	
 	
 	<h2><center>Erregistratu zaitez</center></h2>
+	
+	<a href='../layout.html'>Home</a>
+	
 	<div class="erregistroa" >
 	<form id="form" action="" name="erregistratzea" onsubmit="return true" method="POST"  enctype="multipart/form-data">
 	Eposta(*):
@@ -102,7 +105,7 @@
 			("Connection failed: " . $conn->connect_error);
 		}
 		if($pasahitza==$pasahitzaerrepikatu){
-			
+	
 			if(!preg_match("^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$^",$eposta)){
 				echo "<script language='javascript'>document.getElementById('epostaEgiaztatu').innerHTML=' Eposta ez dago ondo!'; </script>";
 			}elseif(!preg_match("^([A-Z]{1}[a-z]+\s)([A-Z]{1}[a-z]+(\s)?)+$^",$deiturak)){
@@ -113,13 +116,16 @@
 				$sql = "SELECT * FROM Erabiltzaileak WHERE Eposta='$eposta'";
 				$result = $conn->query($sql);
 				
+				//Pasahitza zifratu
+				$pasahitzaZifratu = password_hash($pasahitza,PASSWORD_BCRYPT);
+				
 				if ($result->num_rows == 0) {
 					if($irudia){
 					$sql = "INSERT INTO Erabiltzaileak (Eposta, Deiturak, Pasahitza, Argazkia)
-					VALUES ('$eposta', '$deiturak', '$pasahitza', '$irudiaKodetuta')";
+					VALUES ('$eposta', '$deiturak', '$pasahitzaZifratu', '$irudiaKodetuta')";
 					}else{
 						$sql = "INSERT INTO Erabiltzaileak (Eposta, Deiturak, Pasahitza)
-						VALUES ('$eposta', '$deiturak', '$pasahitza')";
+						VALUES ('$eposta', '$deiturak', '$pasahitzaZifratu')";
 					}
 					
 					if ($conn->query($sql) === TRUE) {
