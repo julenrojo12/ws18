@@ -63,8 +63,12 @@ if($log=="Anonymous"){
 			$erantzunOkerra3 = document.getElementById('erantzunOkerra3').value;
 			$zailtasuna = document.getElementById('zailtasuna').value;
 			$gaiArloa = document.getElementById('gaiArloa').value;
+			$argazkia = document.getElementById('argazkia').value;
+			$argazkiaEncoded = window.btoa($argazkia);
+			
+			
 			document.getElementById('form').reset();
-			$data = ("eposta="+$eposta+"&galdera="+$galdera+"&erantzunZuzena="+$erantzunZuzena+"&erantzunOkerra1="+$erantzunOkerra1+"&erantzunOkerra2="+$erantzunOkerra2+"&erantzunOkerra3="+$erantzunOkerra3+"&zailtasuna="+$zailtasuna+"&gaiArloa="+$gaiArloa);
+			$data = ("eposta="+$eposta+"&galdera="+$galdera+"&erantzunZuzena="+$erantzunZuzena+"&erantzunOkerra1="+$erantzunOkerra1+"&erantzunOkerra2="+$erantzunOkerra2+"&erantzunOkerra3="+$erantzunOkerra3+"&zailtasuna="+$zailtasuna+"&gaiArloa="+$gaiArloa+"&argazkia="+$argazkiaEncoded);
 			
 			$.ajax({
 				  type:'POST',
@@ -129,6 +133,9 @@ if($log=="Anonymous"){
 	  Galderaren zailtasuna(*): <input type="text" id="zailtasuna" name="zailtasuna" required pattern="^[0-5]$" oninvalid="this.setCustomValidity('zailtasuna 0 eta 5 tartean egon behar da.')" oninput="setCustomValidity('')"> 
 	  <br><br>
 	  Gai-arloa(*): <input type="text" id="gaiArloa" name="gaiArloa" required pattern=".{1,}" oninvalid="this.setCustomValidity('Gai arloa hutsik dago')" oninput="setCustomValidity('')">
+	  <br><br>
+	  Irudia:
+	  <input type="file" id="argazkia" accept="image/*" name="argazkia"> 
 	  <br><br>
 	  <button type="reset">Erreseteatu</button>
 	</form> 

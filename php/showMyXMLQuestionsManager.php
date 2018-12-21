@@ -1,6 +1,5 @@
-
+<?php include 'segurtasuna.php'; ?>
 <?php
-session_start();
 $xml =  simplexml_load_file('../xml/questions.xml');
 ?>
 <center><h3> questions.xml fitxategiaren edukia: </h3></center>
@@ -10,7 +9,7 @@ $xml =  simplexml_load_file('../xml/questions.xml');
     <tr>
       <th>Eposta</th>
       <th>Galdera</th>
-      <th>Erantzun zuzezna</th>
+      <th>Erantzun zuzena</th>
     </tr>
   </thead>
   <tbody>
@@ -27,4 +26,3 @@ $xml =  simplexml_load_file('../xml/questions.xml');
 	
   </tbody>
 </table>
-<a href='layoutLogged.php'>Home</a>

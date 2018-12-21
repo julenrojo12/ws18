@@ -1,9 +1,13 @@
 <?php include 'segurtasuna.php'; ?>
 
-
-
+<?php 
+if(isset($_SESSION['quizer'])){
+	unset($_SESSION['quizer']);
+}
+?>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <style>
 body{margin: auto; text-align:center; background-image: url(../images/background.jpg); margin-top: 50px;}
 #play{
@@ -30,8 +34,32 @@ body{margin: auto; text-align:center; background-image: url(../images/background
 	left: 1em;
 	
 }
+.user{
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
 
 </style>
+<script>
+function saveQuizer(){ 
+
+	$nick = document.getElementById('nick').value;
+	$data = ("nick="+$nick);
+	
+	$.ajax({
+		  type:'POST',
+		  url:'selectQuizer.php',
+		  data: $data,
+		  beforeSend:function(){$('#nickName').html('<div><center> <img src="../images/loading.gif" width="150" height="120"/> </center></div>')},
+		  success: function(data){$('#nickName').fadeIn().html(data);},
+		  error:function(){
+			$('#nickName').fadeIn().html('<p class="error"><strong> Zerbitzariak ez duela erantzuten dirudi</p>');
+		  }
+	});
+}
+
+</script>
 </head>
 <body>
 	<h1>QUIZZES</h1>
@@ -43,6 +71,7 @@ body{margin: auto; text-align:center; background-image: url(../images/background
 			}
 	?>
 	</span>
+	<span class="user">
 	<?php 	if($log!="Anonymous"){
 				$eposta = $_SESSION['erabiltzailea'];
 				echo $eposta;
@@ -67,13 +96,29 @@ body{margin: auto; text-align:center; background-image: url(../images/background
 			}else{
 				echo "Anonymous";
 			}
-	?>		
+	?>	
+	</span>
 	<br><br>
+	
+	<form action="" method="POST" name="playAs">
+		<?php	if($log=="Anonymous"){ ?>
+					Play as --> <input type="text" id="nick" required pattern=".{4,12}" name="quizer" placeholder="Min:4, Max:12">   <input type="button" value="Save" onclick="saveQuizer()">
+		<?php   }else{ 
+					$longName=explode('@',$_SESSION['erabiltzailea']);
+					$name = $longName[0];	
+		?>
+					Play as --> <input type="text" id="nick" required pattern=".{4,12}" name="quizer" placeholder="Min:4, Max:12" value="<?php echo $name ?>">   <input type="button" value="Save" onclick="saveQuizer()">
+		<?php	}   ?>
+		
+	</form>
+	<br>
+	<div id="nickName"></div>
+	<br>
 	<h3>Select a quizz:</h3>
 	<button id="play" type="submit" onclick="location.href='onePlay.php'"><b>One Play</b></button>   <button id="play" type="submit" onclick="location.href='playingBySubject.php'"><b>Playing by Subject</b></button>
 	<br><br>
 	<button id="ranking" type="submit" onclick="location.href='globalRanking.php'"><b>Global Ranking</b></button>
- 
+	
 </body>	
 </html>
 

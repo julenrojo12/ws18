@@ -12,6 +12,10 @@
 	$zailtasuna = $_POST["zailtasuna"];
 	$gaiArloa = $_POST["gaiArloa"];
 	
+	if(isset($_POST["argazkia"])){
+		$irudiaKodetuta = $_POST["argazkia"];
+	}
+	
 	
 	
 	if(!preg_match("^([a-z]{3,})([0-9]{3})@ikasle\.ehu\.eus$^",$eposta)){
@@ -46,7 +50,13 @@
 		}
 		
 		
-		$sql = "INSERT INTO Questions (Eposta, Galdera, ErantzunZuzena, ErantzunOkerra1, ErantzunOkerra2, ErantzunOkerra3, GalderarenZailtasuna, GaiArloa) VALUES ('$eposta', '$galdera','$erantzunZuzena','$erantzunOkerra1', '$erantzunOkerra2', '$erantzunOkerra3', '$zailtasuna', '$gaiArloa')";
+		if(isset($_POST["argazkia"])){
+			$sql = "INSERT INTO Questions (Eposta, Galdera, ErantzunZuzena, ErantzunOkerra1, ErantzunOkerra2, ErantzunOkerra3, GalderarenZailtasuna, GaiArloa, Irudia)
+		VALUES ('$eposta', '$galdera','$erantzunZuzena','$erantzunOkerra1', '$erantzunOkerra2', '$erantzunOkerra3', '$zailtasuna', '$gaiArloa', '$irudiaKodetuta')";
+		}else{
+			$sql = "INSERT INTO Questions (Eposta, Galdera, ErantzunZuzena, ErantzunOkerra1, ErantzunOkerra2, ErantzunOkerra3, GalderarenZailtasuna, GaiArloa)
+		VALUES ('$eposta', '$galdera','$erantzunZuzena','$erantzunOkerra1', '$erantzunOkerra2', '$erantzunOkerra3', '$zailtasuna', '$gaiArloa')";
+		}	
 		
 		
 		
